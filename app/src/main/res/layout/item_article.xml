@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="model" type="com.prince.newsapp.model.Article"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@android:color/white"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="10dp">
+
+                <ImageView
+                        android:id="@+id/iv_news_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        app:imageUrl="@{model.urlToImage}" tools:ignore="ContentDescription"/>
+
+                <TextView
+                        android:id="@+id/tv_title_news"
+                        style="@android:style/TextAppearance.Material.Headline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@{model.title}"
+                />
+
+                <TextView
+                        android:id="@+id/tv_author_news"
+                        style="@android:style/TextAppearance.DeviceDefault.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@{model.author}"
+                />
+
+
+                <TextView
+                        android:id="@+id/tv_content_news"
+                        style="@android:style/TextAppearance.DeviceDefault.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:ellipsize="end"
+                        android:maxLines="3"
+                        android:text="@{model.content}"
+                        android:textStyle="normal"
+                />
+
+                <TextView
+                        android:id="@+id/tv_date_news"
+                        style="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="5dp"
+                        app:dateText="@{model.publishedAt}"
+                        android:textSize="14sp"
+                />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
